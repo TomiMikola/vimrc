@@ -15,18 +15,15 @@ set statusline=%<%f\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\ %P
 let g:buftabs_only_basename=1
 let g:buftabs_marker_modified = "+"
 
-" Toggle whitespace visibility with ,s
-nmap <Leader>s :set list!<CR>
-set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮,nbsp:×,eol:¬
-
 " ,L = Toggle line numbers
 map <Leader>L :set invnumber<CR>
 
 
 "------  Generic Behavior  ------
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set hidden
+set showmatch
 filetype indent on
 filetype plugin on
 set autoindent
@@ -203,6 +200,9 @@ autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 au BufWritePost *.coffee silent make!
 autocmd QuickFixCmdPost * nested cwindow | redraw!
 
+"------  Drupal *.module and *.install files. ------
+autocmd BufRead,BufNewFile *.module set filetype=php
+autocmd BufRead,BufNewFile *.install set filetype=php
 
 "------  PHP Filetype Settings  ------
 " ,p = Runs PHP lint checker on current file
@@ -290,7 +290,10 @@ if has("gui_running")
 	endif
 else
 	set t_Co=256
-	colorscheme Mustang
+	colorscheme pablo
+	" colorscheme mustang
+	" colorscheme jellybeans
+	" colorscheme distinguished
 	set mouse=a
 endif
 
