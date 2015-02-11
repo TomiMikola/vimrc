@@ -1,1 +1,1 @@
-tagbar/autoload/tagbar.vim
+../tagbar/autoload/tagbar.vim
